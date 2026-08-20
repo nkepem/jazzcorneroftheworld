@@ -1,0 +1,22 @@
+# Windows
+desktop.ini
+Thumbs.db
+ehthumbs.db
+
+# macOS
+.DS_Store
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+
+# Dépendances / build
+node_modules/
+dist/
+
+# Config Claude Code (local)
+.claude/
+
+# Documents de travail internes (rapports, notes, wiki)
+*.md

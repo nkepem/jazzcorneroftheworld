@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <script>document.documentElement.classList.add('js');</script>
+<title>Le Calendrier Mondial du Jazz — JazzCorner</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  :root {
+    --bg: #0a0a0f; --bg2: #12121a; --gold: #d4a853; --gold-light: #f0c27a;
+    --text: #f5f5f7; --muted: #a0a0b0; --dim: #6b6b7a;
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: 'Segoe UI', Roboto, -apple-system, sans-serif;
+  }
+  body { font-family: var(--sans); color: var(--text); background: var(--bg); line-height: 1.6; }
+  .page {
+    width: 210mm; min-height: 297mm; padding: 20mm; position: relative;
+    background:
+      radial-gradient(ellipse at 15% 8%, rgba(212,168,83,0.10) 0%, transparent 45%),
+      radial-gradient(ellipse at 90% 92%, rgba(240,194,122,0.06) 0%, transparent 45%),
+      var(--bg);
+    page-break-after: always; overflow: hidden;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, .serif { font-family: var(--serif); }
+  .gold { color: var(--gold); }
+  .tag {
+    display: inline-block; padding: 5px 14px; border-radius: 50px;
+    background: rgba(212,168,83,0.10); border: 1px solid rgba(212,168,83,0.25);
+    color: var(--gold); font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
+  }
+  .rule { width: 70px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 26px auto; }
+
+  /* COVER */
+  .cover { display: flex; flex-direction: column; justify-content: center; text-align: center; }
+  .cover .note-icon { font-size: 60px; color: var(--gold); margin-bottom: 24px; }
+  .cover h1 { font-size: 38px; line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 20px; }
+  .cover h1 .gold { display: block; }
+  .cover .sub { color: var(--muted); font-size: 14px; max-width: 135mm; margin: 0 auto 36px; font-style: italic; }
+  .cover .edition { color: var(--gold); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; }
+  .cover .brand { color: var(--dim); font-size: 12px; letter-spacing: 2px; margin-top: 8px; }
+  .cover .legend { color: var(--dim); font-size: 11px; margin-top: 30px; }
+
+  /* SECTION HEADERS */
+  .section-kicker { color: var(--gold); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+  .section-title { font-size: 22px; margin-bottom: 16px; }
+  .lead { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+  .lead strong { color: var(--text); }
+  .sign { color: var(--gold); font-family: var(--serif); font-size: 14px; margin-top: 16px; }
+
+  /* CALENDAR TABLE */
+  .qtr { color: var(--gold-light); font-family: var(--serif); font-size: 15px; margin: 16px 0 8px; border-bottom: 1px solid rgba(212,168,83,0.2); padding-bottom: 5px; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 7px 6px; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; font-size: 11.5px; }
+  td.month { color: var(--gold); font-weight: 700; white-space: nowrap; width: 64px; font-family: var(--serif); }
+  td.fest { color: var(--text); width: 42%; }
+  td.fest b { font-weight: 600; }
+  td.place { color: var(--muted); }
+  .flag { color: var(--dim); font-size: 10px; }
+  .starred td.fest b { color: var(--gold-light); }
+
+  /* ARTIST / CLUB (reused) */
+  .club { margin-top: 22px; padding: 28px; border-radius: 16px; text-align: center;
+    background: linear-gradient(150deg, rgba(212,168,83,0.10), rgba(10,10,15,0.2)); border: 1px solid rgba(212,168,83,0.3); }
+  .club h3 { font-size: 21px; margin: 10px 0 12px; }
+  .club .perks { list-style: none; display: inline-block; text-align: left; margin: 6px auto 16px; }
+  .club .perks li { color: var(--muted); font-size: 12.5px; padding: 4px 0; }
+  .club .btn { display: inline-block; padding: 13px 30px; border-radius: 50px; background: linear-gradient(135deg, var(--gold), #b8923f); color: #0a0a0f; font-weight: 700; font-size: 13px; }
+  .club .free { color: var(--gold); font-size: 13px; margin: 8px 0 14px; font-weight: 600; }
+  .callout { margin-top: 16px; padding: 12px 16px; background: rgba(212,168,83,0.06); border-left: 2px solid var(--gold); border-radius: 4px; color: var(--muted); font-size: 11.5px; }
+
+  .footer { position: absolute; bottom: 12mm; left: 20mm; right: 20mm; text-align: center; color: var(--dim); font-size: 10px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 9px; }
+</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Le calendrier mondial des grands festivals de jazz - Europe, Amerique, Afrique, Asie - par JazzCorner.">
+  <link rel="canonical" href="https://jazzcorner.africa/calendrier-mondial.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#0a0a0f">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="JazzCorner">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Le Calendrier Mondial du Jazz — JazzCorner">
+  <meta property="og:description" content="Le calendrier mondial des grands festivals de jazz - Europe, Amerique, Afrique, Asie - par JazzCorner.">
+  <meta property="og:url" content="https://jazzcorner.africa/calendrier-mondial.html">
+  <meta property="og:image" content="https://jazzcorner.africa/images/og-image.svg">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Le Calendrier Mondial du Jazz — JazzCorner">
+  <meta name="twitter:description" content="Le calendrier mondial des grands festivals de jazz - Europe, Amerique, Afrique, Asie - par JazzCorner.">
+  <meta name="twitter:image" content="https://jazzcorner.africa/images/og-image.svg">
+</head>
+<body>
+
+<!-- PAGE 1 — COVER -->
+<div class="page cover">
+  <div class="note-icon">&#127757;</div>
+  <h1>Le Calendrier<span class="gold">Mondial du Jazz</span></h1>
+  <div class="rule"></div>
+  <p class="sub">Les grands festivals de jazz de la planète, classés par mois — pour ne plus jamais planifier vos voyages jazz à l'aveugle.</p>
+  <div class="edition">Édition 2026 · 5 continents</div>
+  <div class="brand">JazzCorner · jazzcorner.africa</div>
+  <div class="legend">★ = scène d'Afrique centrale, suivie toute l'année dans le JazzCorner Club</div>
+</div>
+
+<!-- PAGE 2 — INTRO -->
+<div class="page">
+  <div class="section-kicker">Un mot avant de commencer</div>
+  <h2 class="section-title">Le jazz est partout</h2>
+  <div class="rule" style="margin:16px 0 22px 0;width:60px;"></div>
+  <p class="lead">D'un théâtre romain en France à une plage de l'Atlantique au Gabon, d'une cité toscane à la baie du Cap — le jazz se joue sur tous les continents, presque tous les mois de l'année.</p>
+  <p class="lead">Ce calendrier réunit les rendez-vous incontournables, classés par période, avec le pays et la ville. Gardez-le sous la main quand vous planifiez vos prochains voyages.</p>
+  <p class="lead"><strong>Une conviction nous guide :</strong> les grands guides s'arrêtent souvent à Montreux et Newport. Pourtant, certaines des scènes les plus vivantes se jouent là où l'on regarde le moins — en Afrique centrale. Nous les avons marquées d'une ★.</p>
+  <p class="sign">— L'équipe JazzCorner</p>
+
+  <div class="callout" style="margin-top:34px;">📌 Comment lire ce calendrier : les dates exactes varient légèrement chaque année — vérifiez toujours le site officiel de chaque festival avant de réserver vols et hébergement.</div>
+  <div class="footer">JazzCorner · Le Calendrier Mondial du Jazz · Édition 2026</div>
+</div>
+
+<!-- PAGE 3 — CALENDAR Jan–Jun -->
+<div class="page">
+  <div class="section-kicker">Le calendrier</div>
+  <h2 class="section-title">Janvier — Juin</h2>
+
+  <div class="qtr">1er trimestre</div>
+  <table>
+    <tr><td class="month">Janvier</td><td class="fest"><b>Panama Jazz Festival</b></td><td class="place">Panama City <span class="flag">· Panama</span></td></tr>
+    <tr><td class="month">Février</td><td class="fest"><b>Bric à Brac / Jazzahead (pré-saison)</b></td><td class="place">Brême <span class="flag">· Allemagne</span></td></tr>
+    <tr class="starred"><td class="month">Mars</td><td class="fest"><b>Cape Town Int'l Jazz Festival ★</b></td><td class="place">Le Cap <span class="flag">· Afrique du Sud</span></td></tr>
+    <tr><td class="month">Mars</td><td class="fest"><b>Java Jazz Festival</b></td><td class="place">Jakarta <span class="flag">· Indonésie</span></td></tr>
+  </table>
+
+  <div class="qtr">2e trimestre</div>
+  <table>
+    <tr><td class="month">Avril</td><td class="fest"><b>New Orleans Jazz &amp; Heritage</b></td><td class="place">La Nouvelle-Orléans <span class="flag">· USA</span></td></tr>
+    <tr><td class="month">Mai</td><td class="fest"><b>Seoul Jazz Festival</b></td><td class="place">Séoul <span class="flag">· Corée du Sud</span></td></tr>
+    <tr class="starred"><td class="month">Mai–Juin</td><td class="fest"><b>Saint-Louis Jazz ★</b></td><td class="place">Saint-Louis <span class="flag">· Sénégal</span></td></tr>
+    <tr><td class="month">Juin</td><td class="fest"><b>Jazz à Vienne</b></td><td class="place">Vienne <span class="flag">· France</span></td></tr>
+    <tr><td class="month">Juin–Juil.</td><td class="fest"><b>Festival Int'l de Jazz de Montréal</b></td><td class="place">Montréal <span class="flag">· Canada</span></td></tr>
+    <tr><td class="month">Juin–Juil.</td><td class="fest"><b>Copenhagen Jazz Festival</b></td><td class="place">Copenhague <span class="flag">· Danemark</span></td></tr>
+  </table>
+
+  <div class="footer">JazzCorner · jazzcorner.africa · info@jazzcorner.africa</div>
+</div>
+
+<!-- PAGE 4 — CALENDAR Jul–Dec + CLUB -->
+<div class="page">
+  <div class="section-kicker">Le calendrier</div>
+  <h2 class="section-title">Juillet — Décembre</h2>
+
+  <div class="qtr">3e trimestre</div>
+  <table>
+    <tr><td class="month">Juillet</td><td class="fest"><b>Montreux Jazz Festival</b></td><td class="place">Montreux <span class="flag">· Suisse</span></td></tr>
+    <tr><td class="month">Juillet</td><td class="fest"><b>North Sea Jazz Festival</b></td><td class="place">Rotterdam <span class="flag">· Pays-Bas</span></td></tr>
+    <tr><td class="month">Juillet</td><td class="fest"><b>Umbria Jazz</b></td><td class="place">Pérouse <span class="flag">· Italie</span></td></tr>
+    <tr><td class="month">Juillet</td><td class="fest"><b>Love Supreme Festival</b></td><td class="place">Sussex <span class="flag">· Royaume-Uni</span></td></tr>
+    <tr><td class="month">Août</td><td class="fest"><b>Newport Jazz Festival</b></td><td class="place">Newport <span class="flag">· USA</span></td></tr>
+    <tr class="starred"><td class="month">Août</td><td class="fest"><b>Jazz à Brazzaville ★</b></td><td class="place">Brazzaville <span class="flag">· Congo</span></td></tr>
+  </table>
+
+  <div class="qtr">4e trimestre</div>
+  <table>
+    <tr class="starred"><td class="month">Septembre</td><td class="fest"><b>Libreville Jazz Festival ★</b></td><td class="place">Libreville <span class="flag">· Gabon</span></td></tr>
+    <tr><td class="month">Septembre</td><td class="fest"><b>Tokyo Jazz Festival</b></td><td class="place">Tokyo <span class="flag">· Japon</span></td></tr>
+    <tr><td class="month">Septembre</td><td class="fest"><b>Detroit Jazz Festival</b></td><td class="place">Detroit <span class="flag">· USA</span></td></tr>
+    <tr><td class="month">Octobre</td><td class="fest"><b>Melbourne Int'l Jazz Festival</b></td><td class="place">Melbourne <span class="flag">· Australie</span></td></tr>
+    <tr><td class="month">Novembre</td><td class="fest"><b>London Jazz Festival</b></td><td class="place">Londres <span class="flag">· Royaume-Uni</span></td></tr>
+    <tr><td class="month">Novembre</td><td class="fest"><b>Guinness Cork Jazz Festival</b></td><td class="place">Cork <span class="flag">· Irlande</span></td></tr>
+  </table>
+
+  <div class="club">
+    <span class="tag">JazzCorner Club</span>
+    <h3>La scène que ce guide ne suffit pas à vivre</h3>
+    <p class="lead" style="max-width:145mm;margin:0 auto 8px;">Ce calendrier vous dit <b>où</b> et <b>quand</b>. Mais les festivals d'Afrique centrale marqués d'une ★ restent les plus difficiles à suivre de loin. Le Club vous y donne accès <b>toute l'année</b> :</p>
+    <ul class="perks">
+      <li>🎥 Concerts &amp; festivals en replay</li>
+      <li>🎼 Sessions privées filmées chaque mois</li>
+      <li>🎟️ Billets en avant-première (tarif membre ★)</li>
+      <li>👥 La communauté des passionnés</li>
+    </ul>
+    <div class="free">Les 7 premiers jours sont offerts.</div>
+    <a class="btn" href="https://jazzcorner.africa/club.html">Découvrir le Club →</a>
+  </div>
+
+  <div class="footer">Bon voyage — et surtout, bons concerts. &#9835; · jazzcorner.africa</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Pages de tunnel / espace privé — non indexées
+Disallow: /merci-agenda.html
+Disallow: /merci-club.html
+Disallow: /merci-festivals.html
+Disallow: /espace-membre.html
+
+Sitemap: https://jazzcorner.africa/sitemap.xml

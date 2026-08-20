@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <script>document.documentElement.classList.add('js');</script>
+<title>L'Agenda du Jazz d'Afrique centrale — Août–Octobre 2026</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  :root {
+    --bg: #0a0a0f; --bg2: #12121a; --gold: #d4a853; --gold-light: #f0c27a;
+    --text: #f5f5f7; --muted: #a0a0b0; --dim: #6b6b7a;
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: 'Segoe UI', Roboto, -apple-system, sans-serif;
+  }
+  body { font-family: var(--sans); color: var(--text); background: var(--bg); line-height: 1.6; }
+  .page {
+    width: 210mm; min-height: 297mm; padding: 22mm 20mm; position: relative;
+    background:
+      radial-gradient(ellipse at 15% 10%, rgba(212,168,83,0.10) 0%, transparent 45%),
+      radial-gradient(ellipse at 90% 90%, rgba(240,194,122,0.06) 0%, transparent 45%),
+      var(--bg);
+    page-break-after: always; overflow: hidden;
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3, .serif { font-family: var(--serif); }
+  .gold { color: var(--gold); }
+  .tag {
+    display: inline-block; padding: 5px 14px; border-radius: 50px;
+    background: rgba(212,168,83,0.10); border: 1px solid rgba(212,168,83,0.25);
+    color: var(--gold); font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
+  }
+
+  /* COVER */
+  .cover { display: flex; flex-direction: column; justify-content: center; text-align: center; }
+  .cover .note-icon { font-size: 64px; color: var(--gold); margin-bottom: 28px; }
+  .cover h1 { font-size: 40px; line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 22px; }
+  .cover h1 .gold { display: block; }
+  .cover .sub { color: var(--muted); font-size: 15px; max-width: 130mm; margin: 0 auto 40px; font-style: italic; }
+  .cover .edition { color: var(--gold); font-size: 14px; letter-spacing: 3px; text-transform: uppercase; }
+  .cover .brand { color: var(--dim); font-size: 12px; letter-spacing: 2px; margin-top: 8px; }
+  .cover .rule { width: 70px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 30px auto; }
+
+  /* SECTIONS */
+  .section-title { font-size: 24px; margin-bottom: 4px; }
+  .section-kicker { color: var(--gold); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px; }
+  .lead { color: var(--muted); font-size: 13.5px; margin-bottom: 14px; }
+  .lead strong { color: var(--text); }
+  .sign { color: var(--gold); font-family: var(--serif); font-size: 14px; margin-top: 18px; }
+
+  .howto { list-style: none; margin: 10px 0; }
+  .howto li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--muted); font-size: 13px; }
+  .howto li b { color: var(--text); }
+
+  /* MONTH + EVENTS */
+  .month { color: var(--gold-light); font-family: var(--serif); font-size: 17px; margin: 22px 0 12px; border-bottom: 1px solid rgba(212,168,83,0.2); padding-bottom: 6px; }
+  .event { display: flex; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .event .date { min-width: 54px; text-align: center; }
+  .event .date .d { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--gold); line-height: 1; }
+  .event .date .m { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--dim); }
+  .event .body h4 { font-family: var(--serif); font-size: 14.5px; margin-bottom: 3px; }
+  .event .body .meta { color: var(--gold); font-size: 11px; margin-bottom: 4px; }
+  .event .body p { color: var(--muted); font-size: 12px; }
+  .star { color: var(--gold); }
+  .callout { margin-top: 18px; padding: 12px 16px; background: rgba(212,168,83,0.06); border-left: 2px solid var(--gold); border-radius: 4px; color: var(--muted); font-size: 12px; }
+
+  /* ARTIST */
+  .artist-card { padding: 26px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; margin-top: 16px; }
+  .artist-card .role { color: var(--gold); font-size: 12px; margin-bottom: 12px; }
+  .artist-card p { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+  .listen { list-style: none; margin-top: 10px; }
+  .listen li { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 12.5px; color: var(--muted); }
+  .listen li b { color: var(--text); }
+
+  /* CLUB CTA */
+  .club { margin-top: 26px; padding: 30px; border-radius: 16px; text-align: center;
+    background: linear-gradient(150deg, rgba(212,168,83,0.10), rgba(10,10,15,0.2)); border: 1px solid rgba(212,168,83,0.3); }
+  .club h3 { font-size: 22px; margin: 10px 0 12px; }
+  .club .perks { list-style: none; display: inline-block; text-align: left; margin: 6px auto 18px; }
+  .club .perks li { color: var(--muted); font-size: 13px; padding: 4px 0; }
+  .club .btn { display: inline-block; padding: 13px 30px; border-radius: 50px; background: linear-gradient(135deg, var(--gold), #b8923f); color: #0a0a0f; font-weight: 700; font-size: 13px; }
+  .club .free { color: var(--gold); font-size: 13px; margin: 10px 0 16px; font-weight: 600; }
+
+  .footer { position: absolute; bottom: 14mm; left: 20mm; right: 20mm; text-align: center; color: var(--dim); font-size: 10.5px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; }
+</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="L'agenda complet des concerts, festivals et jam sessions de jazz d'Afrique centrale - edition aout a octobre 2026.">
+  <link rel="canonical" href="https://jazzcorner.africa/agenda-jazz.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#0a0a0f">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="JazzCorner">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="L'Agenda du Jazz d'Afrique centrale — Août–Octobre 2026">
+  <meta property="og:description" content="L'agenda complet des concerts, festivals et jam sessions de jazz d'Afrique centrale - edition aout a octobre 2026.">
+  <meta property="og:url" content="https://jazzcorner.africa/agenda-jazz.html">
+  <meta property="og:image" content="https://jazzcorner.africa/images/og-image.svg">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="L'Agenda du Jazz d'Afrique centrale — Août–Octobre 2026">
+  <meta name="twitter:description" content="L'agenda complet des concerts, festivals et jam sessions de jazz d'Afrique centrale - edition aout a octobre 2026.">
+  <meta name="twitter:image" content="https://jazzcorner.africa/images/og-image.svg">
+</head>
+<body>
+
+<!-- PAGE 1 — COVER -->
+<div class="page cover">
+  <div class="note-icon">&#9835;</div>
+  <h1>L'Agenda du Jazz<span class="gold">d'Afrique centrale</span></h1>
+  <div class="rule"></div>
+  <p class="sub">Tous les concerts, festivals et jam sessions — du Congo au Tchad.</p>
+  <div class="edition">Édition Août — Octobre 2026</div>
+  <div class="brand">JazzCorner · jazzcorner.africa</div>
+</div>
+
+<!-- PAGE 2 — WELCOME + HOW TO USE -->
+<div class="page">
+  <div class="section-kicker">Un mot avant de commencer</div>
+  <h2 class="section-title">Bienvenue</h2>
+  <div class="rule" style="margin:18px 0 24px 0;width:60px;"></div>
+  <p class="lead">Si vous tenez cet agenda, c'est que ce jazz vous touche autant que nous.</p>
+  <p class="lead">Nous l'avons créé pour une raison simple : la scène jazz d'Afrique centrale est l'une des plus vibrantes au monde — et l'une des plus difficiles à suivre. Les annonces se perdent, les dates circulent trop tard, et on finit par apprendre les meilleurs concerts… une fois qu'ils sont passés.</p>
+  <p class="lead"><strong>Plus maintenant.</strong> Voici, réuni en un seul endroit, tout ce qui vous attend ces prochaines semaines, pays par pays.</p>
+  <p class="lead">Bonne lecture — et surtout, bons concerts.</p>
+  <p class="sign">— L'équipe JazzCorner</p>
+
+  <div style="margin-top:40px;">
+    <div class="section-kicker">Comment utiliser cet agenda</div>
+    <ul class="howto">
+      <li>📅 <b>Classé par date</b>, avec le pays et la ville pour chaque événement.</li>
+      <li>🎟️ <b>Réservez tôt</b> : les festivals affichent souvent complet plusieurs semaines à l'avance.</li>
+      <li>🔁 <b>Mis à jour chaque mois</b> : la prochaine édition arrive dans votre boîte mail.</li>
+      <li>⭐ Les événements étoilés proposent un <b>tarif réduit pour les membres du Club</b> (dernière page).</li>
+    </ul>
+  </div>
+  <div class="footer">JazzCorner · L'Agenda du Jazz d'Afrique centrale · Édition Août–Octobre 2026</div>
+</div>
+
+<!-- PAGE 3 — AGENDA -->
+<div class="page">
+  <div class="section-kicker">L'agenda</div>
+  <h2 class="section-title">Août — Octobre 2026</h2>
+
+  <div class="month">Août 2026</div>
+  <div class="event">
+    <div class="date"><div class="d">15</div><div class="m">Août</div></div>
+    <div class="body"><h4>Jazz à Brazzaville 2026 <span class="star">&#9733;</span></h4><div class="meta">Brazzaville, Congo · Festival</div><p>12ᵉ édition du plus grand festival jazz d'Afrique centrale : 30 artistes, 5 scènes, 3 jours de musique.</p></div>
+  </div>
+  <div class="event">
+    <div class="date"><div class="d">22</div><div class="m">Août</div></div>
+    <div class="body"><h4>Douala Jazz Nights</h4><div class="meta">Douala, Cameroun · Concert</div><p>Soirée avec le Douala Jazz Collective et invités spéciaux. Ambiance club intimiste.</p></div>
+  </div>
+
+  <div class="month">Septembre 2026</div>
+  <div class="event">
+    <div class="date"><div class="d">05</div><div class="m">Sep</div></div>
+    <div class="body"><h4>Libreville Jazz Festival <span class="star">&#9733;</span></h4><div class="meta">Libreville, Gabon · Festival</div><p>Fusion jazz et musiques traditionnelles gabonaises, au bord de l'Atlantique.</p></div>
+  </div>
+  <div class="event">
+    <div class="date"><div class="d">12</div><div class="m">Sep</div></div>
+    <div class="body"><h4>Kinshasa Jazz Session</h4><div class="meta">Kinshasa, RDC · Jam Session</div><p>La jam mensuelle ouverte à tous les musiciens — un rendez-vous incontournable de la scène kinoise.</p></div>
+  </div>
+  <div class="event">
+    <div class="date"><div class="d">20</div><div class="m">Sep</div></div>
+    <div class="body"><h4>Masterclass : Improvisation Jazz</h4><div class="meta">Bangui, RCA · Masterclass</div><p>Atelier dirigé par Paul-David Mouandjo. Techniques d'improvisation pour musiciens confirmés.</p></div>
+  </div>
+
+  <div class="month">Octobre 2026</div>
+  <div class="event">
+    <div class="date"><div class="d">03</div><div class="m">Oct</div></div>
+    <div class="body"><h4>N'Djamena Jazz Nights</h4><div class="meta">N'Djamena, Tchad · Festival</div><p>Première édition du festival jazz de N'Djamena : à la découverte des talents jazz du Tchad.</p></div>
+  </div>
+  <div class="event">
+    <div class="date"><div class="d">18</div><div class="m">Oct</div></div>
+    <div class="body"><h4>Yaoundé Jazz Club</h4><div class="meta">Yaoundé, Cameroun · Concert</div><p>Concert acoustique avec Amandine Bikoko et son quartet. Une soirée placée sous le signe de l'élégance.</p></div>
+  </div>
+
+  <div class="callout">💡 Une date manque ? Vous organisez un événement ? Écrivez-nous : info@jazzcorner.africa</div>
+  <div class="footer">JazzCorner · jazzcorner.africa · info@jazzcorner.africa</div>
+</div>
+
+<!-- PAGE 4 — ARTIST + LISTEN + CLUB -->
+<div class="page">
+  <div class="section-kicker">L'artiste du mois</div>
+  <h2 class="section-title">Sarah Ngom</h2>
+  <div class="artist-card">
+    <div class="role">Saxophoniste · République Centrafricaine</div>
+    <p>Première femme saxophoniste jazz de RCA, Sarah Ngom fait dialoguer son instrument avec l'histoire de son peuple. Un son habité, à découvrir absolument.</p>
+    <p class="gold" style="font-size:12.5px;">🎧 À écouter : Spotify · YouTube</p>
+  </div>
+
+  <div style="margin-top:30px;">
+    <div class="section-kicker">3 choses à écouter ce mois-ci</div>
+    <ul class="listen">
+      <li><b>Kimbangu Jazz Ensemble</b> — fusion des rythmes traditionnels congolais et du jazz contemporain.</li>
+      <li><b>Paul-David Mouandjo</b> — l'album primé aux Africa Jazz Awards 2025.</li>
+      <li><b>Moussa Tall</b> — quand les mélodies sahéliennes rencontrent le jazz.</li>
+    </ul>
+  </div>
+
+  <div class="club">
+    <span class="tag">JazzCorner Club</span>
+    <h3>Et après le concert ?</h3>
+    <p class="lead" style="max-width:140mm;margin:0 auto 8px;">Cet agenda vous dit <b>quand</b> et <b>où</b>. Mais si vous habitez loin, voyagez, ou ratez une date… vous passez quand même à côté. Le Club vous donne le jazz d'Afrique centrale <b>toute l'année</b> :</p>
+    <ul class="perks">
+      <li>🎥 Concerts &amp; festivals en replay</li>
+      <li>🎼 Sessions privées filmées chaque mois</li>
+      <li>🎟️ Billets en avant-première (tarif membre sur les événements ⭐)</li>
+      <li>👥 La communauté des passionnés</li>
+    </ul>
+    <div class="free">Les 7 premiers jours sont offerts.</div>
+    <a class="btn" href="https://jazzcorner.africa/club.html">Découvrir le Club →</a>
+  </div>
+
+  <div class="footer">Rendez-vous le mois prochain pour la nouvelle édition. D'ici là — montez le son. &#9835;</div>
+</div>
+
+</body>
+</html>
